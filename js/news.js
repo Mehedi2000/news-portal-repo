@@ -107,3 +107,7 @@ const toggleSpinner = isLoading => {
 }
 
 loadCategory();
+
+const blogs = () => {
+    location.href = "blog.html";
+}
