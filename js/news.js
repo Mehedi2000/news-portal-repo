@@ -8,10 +8,8 @@ const loadCategory = () => {
 }
 
 const displayCategory = (categorys) => {
-    // console.log(categorys);
     const categoryContainer = document.getElementById('category-container');
     categorys.forEach(category => {
-        // console.log(category)
         const categoryDiv = document.createElement('div')
         categoryDiv.innerHTML = `
         <a class="fs-5 fw-semibold" onclick="loadCategoryNews('${category.category_id}')">${category.category_name}</a>
@@ -21,7 +19,6 @@ const displayCategory = (categorys) => {
 }
 
 const loadCategoryNews = (categoryId) => {
-    // console.log(categoryId)
     // spinner start
     toggleSpinner(true)
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`
@@ -31,7 +28,6 @@ const loadCategoryNews = (categoryId) => {
 }
 
 const displayCategoryNews = (newsAll) => {
-    // console.log(newsAll)
     const newsNumber = document.getElementById('newsNumber');
     newsNumber.innerText = `${newsAll.length} items found`
 
@@ -43,7 +39,6 @@ const displayCategoryNews = (newsAll) => {
     const newsContainer = document.getElementById('news-container')
     newsContainer.innerHTML = '';
     newsAll.forEach(news => {
-        console.log(news)
         const newsDiv = document.createElement('div')
         newsDiv.classList.add('card', 'mb-5')
         newsDiv.innerHTML = `
@@ -93,7 +88,6 @@ const loadNewsDetails = (newsId) => {
 }
 
 const displyNewsDetails = (newsDetails) => {
-    // console.log(newsDetails)
 
     const newsModalTitle = document.getElementById('newsModalLabel')
     newsModalTitle.innerText = newsDetails.title;
@@ -101,6 +95,7 @@ const displyNewsDetails = (newsDetails) => {
     const modalBody = document.getElementById('modal-body');
     modalBody.innerHTML = `
     <img class="w-100" src="${newsDetails.thumbnail_url}">
+    <p class="mt-3 ms-2 text-dark fw-semibold fs-5">view : ${newsDetails.total_view}</p>
     `;
 
 }
