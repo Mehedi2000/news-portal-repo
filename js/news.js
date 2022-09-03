@@ -31,7 +31,7 @@ const displayCategoryNews = (newsAll) => {
     const newsContainer = document.getElementById('news-container')
     newsContainer.innerHTML = '';
     newsAll.forEach(news => {
-        console.log(news)
+        // console.log(news)
         const newsDiv = document.createElement('div')
         newsDiv.classList.add('card', 'mb-5')
         newsDiv.innerHTML = `
@@ -59,7 +59,7 @@ const displayCategoryNews = (newsAll) => {
                     </div>
 
                     <div>
-                    <button class="btn btn-primary fw-bold px-4 py-2">Details</button>
+                    <button class="btn btn-primary fw-bold px-4 py-2" onclick="loadNewsDetails('${news._id}')" data-bs-toggle="modal" data-bs-target="#newsModal">Details</button>
                     </div>
 
                     </div>
@@ -69,6 +69,26 @@ const displayCategoryNews = (newsAll) => {
             `;
         newsContainer.appendChild(newsDiv)
     });
+}
+
+const loadNewsDetails = (newsId) => {
+    const url = ` https://openapi.programming-hero.com/api/news/${newsId}`
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displyNewsDetails(data.data[0]))
+}
+
+const displyNewsDetails = (newsDetails) => {
+    console.log(newsDetails)
+
+    const newsModalTitle = document.getElementById('newsModalLabel')
+    newsModalTitle.innerText = newsDetails.title;
+
+    const modalBody = document.getElementById('modal-body');
+    modalBody.innerHTML = `
+    <img class="w-100" src="${newsDetails.thumbnail_url}">
+    `;
+
 }
 
 loadCategory();
