@@ -31,6 +31,9 @@ const loadCategoryNews = (categoryId) => {
 
 const displayCategoryNews = (newsAll) => {
     // console.log(newsAll)
+    const newsNumber = document.getElementById('newsNumber');
+    newsNumber.innerText = `${newsAll.length} items found`
+
     const newsContainer = document.getElementById('news-container')
     newsContainer.innerHTML = '';
     newsAll.forEach(news => {
@@ -84,7 +87,7 @@ const loadNewsDetails = (newsId) => {
 }
 
 const displyNewsDetails = (newsDetails) => {
-    console.log(newsDetails)
+    // console.log(newsDetails)
 
     const newsModalTitle = document.getElementById('newsModalLabel')
     newsModalTitle.innerText = newsDetails.title;
