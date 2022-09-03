@@ -35,10 +35,15 @@ const displayCategoryNews = (newsAll) => {
     const newsNumber = document.getElementById('newsNumber');
     newsNumber.innerText = `${newsAll.length} items found`
 
+    // sorting
+    newsAll.sort(function (a, b) {
+        return b.total_view - a.total_view;
+    });
+
     const newsContainer = document.getElementById('news-container')
     newsContainer.innerHTML = '';
     newsAll.forEach(news => {
-        // console.log(news)
+        console.log(news)
         const newsDiv = document.createElement('div')
         newsDiv.classList.add('card', 'mb-5')
         newsDiv.innerHTML = `
